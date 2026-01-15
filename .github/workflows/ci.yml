@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PYTHONPATH: ${{ github.workspace }}
+      MOCK_OPENAI: "1"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -13,3 +14,4 @@ jobs:
           python-version: "3.11"
       - run: pip install -r requirements.txt
       - run: pytest -q
+      - run: python scripts/openai_ping.py
